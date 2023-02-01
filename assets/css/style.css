@@ -1,13 +1,13 @@
 /* Standard setup for most projects  */
+* {
+    box-sizing: border-box;
+}
 
 body {
-    background-color: rgb(124, 238, 179);
     font-family: 'Roboto', sans-serif;
     margin: 0;
     display: flex;
     /* aligns content */
-    flex-direction: column;
-    /* stacks content  */
     align-items: center;
     /* centers content */
     justify-content: center;
@@ -15,4 +15,60 @@ body {
     /* takes up 100% of the viewport height  */
     overflow: hidden;
     /* prevents scroll bard from showing by default  */
+}
+
+.container {
+    display: flex;
+    /* puts all the associated divs in a row  */
+    width: 90vw;
+    /* sets it to 90% of the viewport width */
+}
+
+.panel {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    flex: 0.5;
+    /* change this to 5 for active class */
+    margin: 10px;
+    position: relative;
+    /* allows us to psotion the text absolute */
+    transition: flex 0.7s ease-in;
+    /* transition time to the active card */
+}
+
+.panel h3 {
+    font-size: 18px;
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+    /* makes them invisible until active */
+}
+
+.panel.active {
+    flex: 5;
+}
+
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+    /* prevents clunky text appearing when panels open */
+}
+
+@media(max-width: 480px) {
+    .container {
+        width: 100vw;
+        /* creates more room in the viewport on smaller screens */
+    }
+
+    .panel:nth-of-type(4) {
+        display: none;
+        /* removes the 4th panel from view on small screens */
+    }
 }
